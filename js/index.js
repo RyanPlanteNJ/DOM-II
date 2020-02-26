@@ -2,6 +2,7 @@
 
 const nav = document.querySelector('.main-navigation');
 nav.style = "z-index: 1";
+nav.preventDefault();
 
 
 const header = document.querySelector('.logo-heading');
