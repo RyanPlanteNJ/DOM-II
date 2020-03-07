@@ -2,7 +2,7 @@
 
 const nav = document.querySelector('.main-navigation');
 nav.style = "z-index: 1";
-nav.preventDefault();
+// nav.preventDefault();
 
 
 const header = document.querySelector('.logo-heading');
@@ -11,6 +11,7 @@ const header = document.querySelector('.logo-heading');
     header.style.color = "blue";
   header.addEventListener('dblclick', (event) =>{
     header.innerText = `Fun Bus`;
+    header.style.color = "black";
   })
 });
 
@@ -55,6 +56,18 @@ inverse.addEventListener('mouseover', (event) => {
   event.stopPropagation();
   inverse.addEventListener('mouseleave', (event) => {
     inverse.style = "scale: 1; z-index: 0";
+    nav.style = "z-index: 1"
+    event.stopPropagation();
+  });
+});
+
+const destination = document.querySelector('.content-destination');
+destination.addEventListener('mouseover', (event) => {
+  destination.style = "scale: 1.5; background-color: white; z-index: 1";
+  nav.style = "z-index: 2"
+  event.stopPropagation();
+  destination.addEventListener('mouseleave', (event) => {
+    destination.style = "scale: 1; z-index: 0";
     nav.style = "z-index: 1"
     event.stopPropagation();
   });
