@@ -8,6 +8,7 @@ const navlinks = document.querySelectorAll('.nav-link');
 navlinks.forEach(el => {
   el.addEventListener('click', (event) => {
     event.preventDefault();
+    event.stopPropagation();
   });
 });
 
