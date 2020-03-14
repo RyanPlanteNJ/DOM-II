@@ -13,6 +13,11 @@ navlinks.forEach(el => {
 });
 
 
+const ricky = document.getElementsByTagName('img');
+  window.addEventListener('keypress', (event) => {
+    console.log(event.keyCode);
+  });
+
 const header = document.querySelector('.logo-heading');
   header.addEventListener('click', (event) => {
     header.innerText = "Hover Over Some Objects";
