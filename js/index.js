@@ -12,10 +12,14 @@ navlinks.forEach(el => {
   });
 });
 
-
-const ricky = document.getElementsByTagName('img');
+const ricky = document.querySelectorAll('img');
   window.addEventListener('keypress', (event) => {
     console.log(event.keyCode);
+    if (event.keyCode == 112) {
+      ricky.forEach(rick => {
+        rick.src = "img/rick.gif"
+      });
+    }
   });
 
 const header = document.querySelector('.logo-heading');
