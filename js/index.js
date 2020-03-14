@@ -1,10 +1,11 @@
 // Your code goes here
 
+//just keeps the nap on top
 const nav = document.querySelector('.main-navigation');
 nav.style = "z-index: 1";
 
+//stopPropagation and preventDefault
 const navlinks = document.querySelectorAll('.nav-link');
-
 navlinks.forEach(el => {
   el.addEventListener('click', (event) => {
     event.preventDefault();
@@ -12,37 +13,48 @@ navlinks.forEach(el => {
   });
 });
 
-const ricky = document.querySelectorAll('img');
+//never gonna give you up gif on keypress
+const ricky = document.querySelector('img');
   window.addEventListener('keypress', (event) => {
-    console.log(event.keyCode);
     if (event.keyCode == 112) {
-      ricky.forEach(rick => {
-        rick.src = "img/rick.gif"
-      });
+      ricky.src = 'img/rick.gif';
+      event.stopPropagation();
+    } else{
+      ricky.src = 'img/fun-bus.jpg';
     }
   });
 
-const header = document.querySelector('.logo-heading');
-  header.addEventListener('click', (event) => {
-    header.innerText = "Hover Over Some Objects";
-    header.style.color = "blue";
-  header.addEventListener('dblclick', (event) =>{
-    header.innerText = `Fun Bus`;
-    header.style.color = "black";
+//just adding drag to the image
+  ricky.addEventListener('drag', (event) => {
+    event.target.style = 'scale: 2; opacity: .3; transition: .5s'
   })
-});
+  ricky.addEventListener('dragend', (event) => {
+    event.target.style = 'scale: 1; opacity: 1; transition: .5s'
+  })
 
 
-const uppercontent = document.querySelector('.intro');
-uppercontent.addEventListener('mouseenter', (event) => {
-  uppercontent.style.backgroundColor = 'grey';
-  event.stopPropagation();
-  uppercontent.addEventListener('mouseleave', (event) => {
-    uppercontent.style.backgroundColor = 'transparent';
-    event.stopPropagation();
+//click and dblclick
+const header = document.querySelector('.logo-heading');
+header.addEventListener('click', (event) => {
+    header.innerText = 'Hover Over Some Objects';
+    header.style.color = 'blue';
   });
+header.addEventListener('dblclick', (event) => {
+    header.innerText = 'Fun Bus';
+    header.style.color = 'black';
 });
 
+//another keypress to change header
+window.addEventListener('keypress', (event) => {
+    if (event.keyCode == 110) {
+      header.innerText = 'Never Gonna Give You Up';
+      event.stopPropagation();
+    } else {
+      header.innerText = 'Fun Bus';
+    }
+  });
+
+//mouse enter nad mouse leave on both sections
 const uppercontentname = document. querySelector ('.intro h2');
 uppercontentname.addEventListener('mouseenter', (event) => {
     uppercontentname.innerText = "See What's Inside!";
@@ -70,7 +82,7 @@ content.forEach( el => {
 
 const inverse = document.querySelector('.inverse-content');
 inverse.addEventListener('mouseover', (event) => {
-  inverse.style = "scale: 1.5; background-color: white; z-index: 1; transition: .3s";
+  inverse.style = "scale: .5; background-color: white; z-index: 1; transition: .1s";
   nav.style = "z-index: 2";
   event.stopPropagation();
   inverse.addEventListener('mouseleave', (event) => {
@@ -91,3 +103,30 @@ destination.addEventListener('mouseover', (event) => {
     event.stopPropagation();
   });
 });
+
+
+const astley = document.querySelectorAll('.btn');
+console.log(astley);
+for (let i = 0; i < astley.length; i++) {
+  astley[i].addEventListener('click', (event) => {
+    if (event.target === astley[0]) {
+      if (astley[0].innerText == 'Sign Me Up!') {
+            astley[0].textContent = "Never Gonna Let You Down";
+      } else {
+        astley[0].textContent = "Sign Me Up!";
+      }
+    } else if (event.target === astley[1]) {
+			if (astley[1].textContent == 'Sign Me Up!') {
+				astley[1].textContent = 'Never Gonna Turn Around';
+			} else {
+				astley[1].textContent = 'Sign Me Up!';
+			}
+		} else {
+			if (astley[2].textContent == 'Sign Me Up!') {
+				astley[2].textContent = "And Desert You";
+			} else {
+				astley[2].textContent = 'Sign Me Up!';
+			}
+		}
+  });
+}
